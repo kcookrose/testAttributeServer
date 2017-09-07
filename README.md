@@ -1,3 +1,3 @@
 # Species Finder
 
-Dog? Caterpillar? Ethnicity of a person? Sex/gender/age of a person? Use AI to find out.
+Species Finder is an app to find out who you really are based on a portrait.
