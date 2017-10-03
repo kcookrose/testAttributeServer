@@ -14,6 +14,6 @@ Now type `docker run nameyouwanttogivtheimagehere` where nameyouwanttogivtheimag
 
 What should happen is that app.py is run inside the image, which has a fully functioning TensorFlow/Keras enviornment installed. app.py contains the example code from the Keras repository for training a Neural Net on the MNISt dataset to classify handwritten digits. Classic.
 
-# Acknoledgements
+# Acknowledgment
 
 Test portrait: https://unsplash.com/photos/das6NrjLoM0
