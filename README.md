@@ -10,4 +10,4 @@ Type `docker build -t nameyouwanttogivetheimagehere .`, where you can replace na
 
 Let it do its thing. Upon first running this, it will download a lot of things. This is a good thing.
 
-Now type `docker run -it nameyouwanttogivetheimagehere /bin/bash` and then `python main.py portrait.jpg`
+Now type `docker run -it nameyouwanttogivetheimagehere /bin/bash` and then `python3 main.py portrait.jpg`
