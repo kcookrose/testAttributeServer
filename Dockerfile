@@ -7,8 +7,10 @@ RUN pip install --upgrade pip && \
     pip install requests pip && \
     pip install keras
 
+RUN apt-get install python3
+
 COPY keras.json /root/.keras/keras.json
 
-ADD . /app
+ADD . /species-finder
 
-WORKDIR /app
+WORKDIR /species-finder/app
