@@ -13,4 +13,4 @@ COPY keras.json /root/.keras/keras.json
 
 ADD . /species-finder
 
-WORKDIR /species-finder/app
+WORKDIR "/species-finder/notebooks"
