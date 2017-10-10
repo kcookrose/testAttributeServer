@@ -12,7 +12,7 @@ Let it do its thing. Upon first running this, it will download a lot of things. 
 
 Now run this, but only once:
 
-`docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/notebooks:/notebooks --name notebooks nameyouwanttogivetheimagehere`
+`docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/notebooks:/species-finder/notebooks --name notebooks nameyouwanttogivetheimagehere`
 
 The notebook server should spin up and the terminal should tell you something like the following:
 
