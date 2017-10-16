@@ -29,7 +29,6 @@ So since python 3.6 simply using venv is the recommended way of doing things. Wh
 Okay. Pull the repo, switch to this branch, which s still called virtualenv for historical reasons. Type: 
 
 `python3 -m venv env`
-
 NOTE: If python 3 is your standard version which is called when you type `python` you can use that instead of `python3`
 
 then
