@@ -42,6 +42,8 @@ then
 
 `pip install requirements.txt`
 
+NOTE: I really thought this .txt would work, but apparently it does not. If you run into trouble, just `pip install` the following packages: tensorflow, keras, matplotlib, scipy, Pillow, h5py
+
 then
 
 `cd code/notebooks`
