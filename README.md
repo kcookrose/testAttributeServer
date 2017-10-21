@@ -40,9 +40,9 @@ NOTE: On Windows, you probably need backslashes? I don't know.
 
 then
 
-`pip install requirements.txt`
+`pip install -r requirements.txt`
 
-NOTE: I really thought this .txt would work, but apparently it does not. If you run into trouble, just `pip install` the following packages: tensorflow, keras, matplotlib, scipy, Pillow, h5py
+NOTE: If you run into trouble, just `pip install` the following packages: tensorflow, keras, matplotlib, scipy, Pillow, h5py
 
 then
 
