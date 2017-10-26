@@ -6,6 +6,7 @@
 *.exe
 *.o
 *.so
+*.pyc
 
 # Packages #
 ############
@@ -36,5 +37,13 @@
 ehthumbs.db
 Thumbs.db
 
+__pycache__
+.ipynb_checkpoints
+
 env/
 .idea/
+
+.floydexpt
+.floydignore
+
+datasets/
