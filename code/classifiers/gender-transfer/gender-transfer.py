@@ -1,19 +1,24 @@
-import numpy as np
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Dropout, Flatten, Dense
 from keras import applications
+import numpy as np
+import os
 
 # dimensions of our images.
 img_width, img_height = 150, 150
 
-top_model_weights_path = 'output/bottleneck_fc_model.h5'
-train_data_dir = '../../../datasets/gender-data/train'
-validation_data_dir = '../../../datasets/gender-data/train'
-nb_train_samples = 200
-nb_validation_samples = 40
+package_directory               = os.path.dirname(os.path.abspath(__file__))
+top_model_weights_path          = os.path.join(package_directory, 'output/bottleneck_fc_model.h5')
+train_data_dir                  = os.path.join(package_directory, '../../../datasets/gender-data/train')
+validation_data_dir             = os.path.join(package_directory, '../../../datasets/gender-data/train')
+bottleneck_feature_train_dir    = os.path.join(package_directory, 'output/bottleneck_features_train.npy')
+bottleneck_feature_val_dir      = os.path.join(package_directory, 'output/bottleneck_features_validation.npy')
+
+nb_train_samples = 20
+nb_validation_samples = 8
 epochs = 50
-batch_size = 8
+batch_size = 2
 
 
 def save_bottleneck_features():
@@ -30,7 +35,7 @@ def save_bottleneck_features():
         shuffle=False)
     bottleneck_features_train = model.predict_generator(
         generator, nb_train_samples // batch_size)
-    np.save('output/bottleneck_features_train.npy',
+    np.save(bottleneck_feature_train_dir,
             bottleneck_features_train)
 
     generator = datagen.flow_from_directory(
@@ -41,15 +46,15 @@ def save_bottleneck_features():
         shuffle=False)
     bottleneck_features_validation = model.predict_generator(
         generator, nb_validation_samples // batch_size)
-    np.save('output/bottleneck_features_validation.npy',
+    np.save(bottleneck_feature_val_dir,
             bottleneck_features_validation)
 
 
 def train_top_model():
-    train_data = np.load('output/bottleneck_features_train.npy')
+    train_data = np.load(bottleneck_feature_train_dir)
     train_labels = np.array([0] * int((nb_train_samples / 2)) + [1] * int((nb_train_samples / 2)))
 
-    validation_data = np.load('output/bottleneck_features_validation.npy')
+    validation_data = np.load(bottleneck_feature_val_dir)
     validation_labels = np.array([0] * int((nb_validation_samples / 2)) + [1] * int((nb_validation_samples / 2)))
 
     model = Sequential()
