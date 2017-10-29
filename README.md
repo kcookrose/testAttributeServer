@@ -4,55 +4,82 @@ Species Finder is an app to find out who you really are based on a portrait.
 
 # How to use this repository
 
-## A Bit of Python History
+## Basics
 
-Okay, since Docker's the worst, we'll use venv instead. What's venv you ask? Well ... let's start at the beginning.
+If you have a python installation named `python3` you can do the following:
 
-There once was a tool called virtualenv:
+When you pull this repository for the first time and want to get started, change to the repo directory in a terminal and type:
 
-"virtualenv solves a very specific problem: it allows multiple Python projects that have different (and often conflicting) requirements, to coexist on the same computer." [SOURCE](https://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
+`./set-up.sh`
 
-virtualenv was the standard for creating virtual python enviroments up until python version 3.3. That's when the python developers created their own, native implementation of the concept. Here's another quote:
+This should install the basic requirements for you and source the virtual environment so you are ready to go.
 
-"If you are using Python 3 then you should already have pyvenv installed. This is a file that uses the venv library underneath.
+If your python installation isn't called `python3` (but `python` for example) you still need to do this by hand:
 
-From here on out we’ll assume you’re using the newer pyvenv tool, since there are few differences between it and virtualenv with regard to the actual commands. In reality, though, they are very different tools." [SOURCE](https://realpython.com/blog/python/python-virtual-environments-a-primer/)
-
-So venv was their library that was then wrapped by the pyenv script, which was used the same way virtualenv was used before it came along. BUT THEN: 
-
-"The pyvenv script has been deprecated as of Python 3.6 in favor of using python3 -m venv to help prevent any potential confusion as to which Python interpreter a virtual environment will be based on." [SOURCE](https://docs.python.org/3/library/venv.html)
-
-So since python 3.6 simply using venv is the recommended way of doing things. Which is what we will be doing. And what I had to slowly find out after going through all the aforemantioned stages. (I think I am now at "acceptance".)
-
-## Boring! Give me the details.
-
-Okay. Pull the repo, switch to this branch, which s still called virtualenv for historical reasons. Type: 
-
-`python3 -m venv env`
-
-NOTE: If python 3 is your standard version which is called when you type `python` you can use that instead of `python3`
-
-then
-
+`python -m venv env`
 `source env/bin/activate`
-
-NOTE: On Windows, you probably need backslashes? I don't know.
-
-then
-
 `pip install -r requirements.txt`
+`ip install h5py`
 
-NOTE: If you run into trouble, just `pip install` the following packages: tensorflow, keras, matplotlib, scipy, Pillow, h5py
+What you want to do after this depends on what you are here to do.
 
-then
+## Just run the Command Line App
+
+If you want to classify an image using our industry strength image recognition technology you have to type the following:
+
+`python code/app/main.py code/app/portrait.jpg`
+
+This should print two things in the end: black and [[1.0]]. This tells you that our classifier thinks that our sample image of a hat-wearing male heartlander is indeed a picture of a male (1.0) ... black person. (We haven't had the chance to finetune our model yet. But it's already at 72.5% accuracy - which isn't too bad, really.)
+
+If you want to see what our app thinks of your image, simply replace the `code/app/portrait.jpg` in the call with the path to your image. Again, our classifiers aren't finetuned yet.
+
+## Train a Classifier on Gender Data
+
+Still in the repo's root folder run:
+
+`./code/data-manipulation/download_wiki_data.sh`
+
+This then loads and extracts the wiki dataset from https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/ and should put it in a (maybe newly created) `datasets` folder in the repo's root.
+
+Now run:
+
+`python code/data-manipulation/arrange_wiki_data.py gender 100 40 -c`
+
+This cleans up the base wiki dataset and moves the specified amount of training images (100) and validation images (40) for each class into a new gender-data folder inside the datasets folder.
+
+You can now run:
+
+`python code/classifiers/gender-transfer/gender-transfer.py`
+
+ ... which should start the learning process.
+
+## Train a Classifier on Ethnicity Data
+
+Still in the repo's root folder run:
+
+`./code/data-manipulation/download_ethnicity_data.sh`
+
+This then loads and extracts the ethnicity dataset from http://wiki.cnbc.cmu.edu/ and should put it in a (maybe newly created) `datasets` folder in the repo's root.
+
+Now run:
+
+`python code/data-manipulation/arrange_ethnicity_data.py 100 40`
+
+This moves 100 training images and 40 validation images per class into a folder named ethnicity-data inside the datasets folder.
+
+You can now run:
+
+`python code/classifiers/ethnicity-transfer/multiclass.py`
+
+ ... which should start the learning process.
+
+## Have a Look at the Notebooks
+
+To run the Jupyter notebook server run:
 
 `cd code/notebooks`
 
-then
-
 `jupyter notebook`
-
-That should be it. You should now see the Jupyter interfaces in your browser.
 
 # Acknowledgment
 
