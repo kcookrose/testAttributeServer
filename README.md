@@ -29,7 +29,7 @@ If you want to classify an image using our industry strength image recognition t
 
 `python code/app/main.py code/app/portrait.jpg`
 
-This should print two things in the end: black and [[1.0]]. This tells you that our classifier thinks that our sample image of a hat-wearing male heartlander is indeed a picture of a male (1.0) ... black person. (We haven't had the chance to finetune our model yet. But it's already at 72.5% accuracy - which isn't too bad, really.)
+This should print two things in the end: asian and male. This tells you that our classifier thinks that our sample image of a hat-wearing male heartlander is indeed a picture of a male ... asian person. (We haven't had the chance to finetune our model yet. But it's already at 72.5% accuracy - which isn't too bad, really.)
 
 If you want to see what our app thinks of your image, simply replace the `code/app/portrait.jpg` in the call with the path to your image. Again, our classifiers aren't finetuned yet.
 
@@ -49,7 +49,7 @@ This cleans up the base wiki dataset and moves the specified amount of training 
 
 You can now run:
 
-`python code/classifiers/gender-transfer/gender-transfer.py`
+`python code/classifiers/gender-transfer/multiclass.py`
 
  ... which should start the learning process.
 
