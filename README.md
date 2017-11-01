@@ -17,7 +17,7 @@ This should install the basic requirements for you and source the virtual enviro
 If your python installation isn't called `python3` (but `python` for example) you still need to do this by hand:
 
 `python -m venv env`
-`source env/bin/activate`
+`source env/bin/activate (linux based) call env/Scripts/activate (Windows)`
 `pip install -r requirements.txt`
 `ip install h5py`
 
