@@ -81,6 +81,26 @@ To run the Jupyter notebook server run:
 
 `jupyter notebook`
 
+## Run the Server
+
+Install flask, go into the code/app folder and run:
+
+`FLASK_APP=server.py flask run`
+
+You can then upload images to the server from any html with this form:
+
+`<form action="http://127.0.0.1:5000/classification/portrait" enctype=multipart/form-data method="POST">
+		<input type="file" name="file">
+		<input type="submit" name="">
+	</form>`
+ 
+You'll get back a JSON Response that looks similar to this:
+ 
+`{
+ ethnicity:	"Asian"
+ gender:	"male"
+}`
+
 # Acknowledgment
 
 Test portrait: https://unsplash.com/photos/das6NrjLoM0
