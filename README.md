@@ -85,7 +85,9 @@ To run the Jupyter notebook server run:
 
 Install flask, go into the code/app folder and run:
 
-`FLASK_APP=server.py flask run`
+Linux: `FLASK_APP=server.py flask run`
+
+Windows: `set FLASK_APP=server.py` then `flask run`
 
 You can then upload images to the server from any html with this form:
 
