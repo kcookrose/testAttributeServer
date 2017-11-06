@@ -87,7 +87,7 @@ Install flask, go into the code/app folder and run:
 
 Linux: `FLASK_APP=server.py flask run`
 
-Windows: `set FLASK_APP=server.py` then `flask run`
+Windows: `set FLASK_APP=server.py` then `flask run` (may require pip install pillow)
 
 You can then upload images to the server from any html with this form:
 
